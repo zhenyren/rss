@@ -1,0 +1,11 @@
+html,
+body,
+#root, /* 如果是 React */
+#app {
+  /* 如果是 Vue */
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 防止无端出现滚动条影响视觉 */
+}
