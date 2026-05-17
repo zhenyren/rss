@@ -38,8 +38,8 @@ export default defineConfig(async () => ({
   build: {
     rollupOptions: {
       input: {
-        main: "src/window/main/main.tsx",
-        message_assistant_card: "src/window/message_assistant_card/main.tsx",
+        index: "index.html",
+        message_assistant_card: "message_assistant_card.html",
       },
     },
   },
