@@ -36,7 +36,7 @@ export const useUserStore = () => {
 
     // 2. 核心：监听 "name" 这个键的变化！
     // 不管是主窗口还是后台改了 "name"，这里都会被实时触发
-    let unlisten: () => void;
+    // let unlisten: () => void;
 
     // 关键：不再盯着 keyChange，而是监听 Tauri 的全局跨窗口广播 "sync-user-name"
     let unlistenFn: (() => void) | null = null;

@@ -5,12 +5,7 @@ import AppTitleBar from "@/components/layouts/AppTitleBar";
 // import { useUserStore } from "../../store/useUserStore";
 // import { useMessageAssistantCardWindow } from "../../hooks/useMessageAssistantCardWindow";
 import HomeView from "@/views/HomeView";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   // const { user, updateName } = useUserStore();
