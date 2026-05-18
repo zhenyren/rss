@@ -30,11 +30,8 @@ pub fn open_message_assistant_card_window(app_handle: AppHandle) {
         .inner_size(300.0, 400.0)
         .resizable(false)
         .decorations(false) // 无边框
-        .transparent(true) // 透明背景
         .always_on_top(true) // 顶层显示
         .skip_taskbar(true); // 隐藏任务栏图标
-
-        // 正式创建窗口
         let _ = card_window.build();
     }
 }
