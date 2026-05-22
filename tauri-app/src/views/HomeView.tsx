@@ -1,7 +1,7 @@
 import logger from "@/common/logger";
 import { useMessageAssistantCardWindow } from "@/hooks/useMessageAssistantCardWindow";
 import { useUserStore } from "@/store/useUserStore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function HomeView() {
   const { user, updateName } = useUserStore();
