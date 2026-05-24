@@ -1,5 +1,5 @@
-import { windowApi } from "../ipc/windowApi";
-import logger from "../common/logger";
+import { windowApi } from "@/shared/ipc/windowApi";
+import logger from "@/shared/utils/logger";
 
 export const useMessageAssistantCardWindow = () => {
   const open = async () => {

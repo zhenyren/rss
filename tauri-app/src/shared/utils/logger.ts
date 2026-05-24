@@ -1,4 +1,4 @@
-import { systemApi } from "../ipc/systemApi";
+import { systemApi } from "@/shared/ipc/systemApi";
 
 class Logger {
   /** 内部格式化：支持多参数序列化、Error对象堆栈提取、对象缩进换行 */

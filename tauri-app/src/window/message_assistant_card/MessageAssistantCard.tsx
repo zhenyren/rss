@@ -1,5 +1,5 @@
-import { useMessageAssistantCardWindow } from "../../hooks/useMessageAssistantCardWindow";
-import { useUserStore } from "../../store/useUserStore";
+import { useMessageAssistantCardWindow } from "../../shared/hooks/useMessageAssistantCardWindow";
+import { useUserStore } from "../../shared/store/useUserStore";
 import "./MessageAssistantCard.css";
 
 export default function MessageAssistantCard() {

@@ -1,6 +1,6 @@
 import { LazyStore } from "@tauri-apps/plugin-store";
 import { create } from "zustand";
-import logger from "../common/logger";
+import logger from "@/shared/utils/logger";
 import { emit } from "@tauri-apps/api/event";
 
 interface ArticleStore {

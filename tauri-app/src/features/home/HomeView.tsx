@@ -1,6 +1,6 @@
-import logger from "@/common/logger";
-import { useMessageAssistantCardWindow } from "@/hooks/useMessageAssistantCardWindow";
-import { useUserStore } from "@/store/useUserStore";
+import logger from "@/shared/utils/logger";
+import { useMessageAssistantCardWindow } from "@/shared/hooks/useMessageAssistantCardWindow";
+import { useUserStore } from "@/shared/store/useUserStore";
 import { useState } from "react";
 
 export default function HomeView() {

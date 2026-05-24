@@ -1,7 +1,7 @@
 // 引入 LazyStore
 import { LazyStore } from "@tauri-apps/plugin-store";
 import { useEffect, useState } from "react";
-import logger from "../common/logger";
+import logger from "@/shared/utils/logger";
 import { emit, listen } from "@tauri-apps/api/event";
 
 interface User {

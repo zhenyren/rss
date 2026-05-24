@@ -1,6 +1,6 @@
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useEffect, useState } from "react";
-import logger from "../common/logger";
+import logger from "../utils/logger";
 
 export const useAppWindow = () => {
   // 获取当前窗口
