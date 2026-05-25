@@ -49,14 +49,11 @@ async function openFileDialog(
 /**
  * 打开文件选择对话框（选择文本或图片）
  */
-async function openTextOrImageFile(): Promise<string | null> {
+async function openTextOrImageFile(
+  filters?: OpenDialogOptions["filters"],
+): Promise<string | null> {
   const result = await openFileDialog({
-    filters: [
-      {
-        name: "文本或图片",
-        extensions: ["txt", "md", "png", "jpg", "jpeg"],
-      },
-    ],
+    filters: filters || [],
   });
 
   if (result === null) {

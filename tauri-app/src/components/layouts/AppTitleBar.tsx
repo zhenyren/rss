@@ -46,6 +46,12 @@ export default function AppTitleBar() {
         >
           文件
         </div>
+        <div
+          onClick={() => GoRouter.push(ERoutePath.ThreeLayout)}
+          className="px-3 py-1 text-sm text-gray-700 rounded-md hover:bg-gray-200/80 cursor-pointer transition-all"
+        >
+          3D场景
+        </div>
       </div>
 
       {/* 中间占位（让按钮靠右） */}

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ERoutePath } from "./ERoutePath";
+import { ERoutePath, OtherRoutePath } from "./ERoutePath";
 
 export interface User {
   name: string;
@@ -18,7 +18,7 @@ export class GoRouter {
   // Home：必须传第二个参数 User
   static push(path: ERoutePath.Home, user: User): void;
   // 其他路由：不能传参
-  static push(path: Exclude<ERoutePath, ERoutePath.Home>): void;
+  static push(path: OtherRoutePath): void;
   // 实现签名
   static push(path: ERoutePath, user?: User): void {
     if (path === ERoutePath.Home) {

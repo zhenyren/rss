@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js 极简全景看房</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+      #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        font-family: sans-serif;
+        pointer-events: none;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
+  <body>
+    <div id="info">极简 3D 全景看房（鼠标拖拽视角，滚轮缩放）</div>
+
+    <script>
+      // 1. 创建场景 (Scene)
+      const scene = new THREE.Scene();
+
+      // 2. 创建相机 (Camera)
+      // 视角(FOV)设为 75 度，把相机放在原点 (0, 0, 0)
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      );
+      camera.position.set(0, 0, 0);
+
+      // 3. 创建渲染器 (Renderer) 并添加到页面
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // 4. 添加鼠标控制器 (OrbitControls)
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // 开启阻尼感（让旋转更平滑）
+      controls.dampingFactor = 0.05;
+      controls.enableZoom https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/rogland_clear_night.jpg= true; // 允许滚轮缩放大小
+      // 限制缩放范围，防止穿透球体
+      controls.minDistance = 1;
+      controls.maxDistance = 100;
+
+      // 5. 创建全景球体 (关键步骤！)
+      // 创建一个半径为 500 的大球体
+      const geometry = new THREE.SphereGeometry(500, 60, 40);
+
+      // 【避坑核心】翻转球体的几何面，让材质贴在球体内壁，而不是外表
+      geometry.scale(-1, 1, 1);
+
+      // 6. 加载全景图片
+      const textureLoader = new THREE.TextureLoader();
+      // 这里使用的是一张公共的客厅全景测试图（2:1 比例的等距柱状投影图）
+      const panoramaUrl =
+        "file:///Users/kejun/Downloads/rogland_clear_night.jpg";
+
+      const material = new THREE.MeshBasicMaterial({
+        map: textureLoader.load(panoramaUrl),
+      });
+
+      // 7. 生成网格并组合放入场景
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
+
+      // 8. 动画渲染循环
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update(); // 只有开启阻尼时才需要每次更新
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // 9. 监听窗口大小改变，自适应屏幕
+      window.addEventListener("resize", onWindowResize, false);
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+    </script>
+  </body>
+</html>
